@@ -1,19 +1,15 @@
-import Typography from "typography"
-import Theme from "typography-theme-moraga"
+import Typography from 'typography'
+import theme from 'typography-theme-github' // テーマのインポート
 
-Theme.googleFonts.push({
-// Noto Sans JP フォントを利用する
-  name: "Noto+Sans+JP",
-  styles: ["400"],
-})
-Theme.bodyFontFamily = ["Noto Sans JP", "Roboto", "serif"]
-const typography = new Typography(Theme)
+theme.headerFontFamily = ['M PLUS 1p', 'Roboto', 'serif']
+theme.bodyFontFamily = ['M PLUS 1p', 'Roboto', 'serif']
+theme.googleFonts = [
+  {
+    name: 'M+PLUS+1p',
+    styles: ['400'],
+  }
+]
 
-// Hot reload typography in development.
-if (process.env.NODE_ENV !== `production`) {
-  typography.injectStyles()
-}
+const typography = new Typography(theme)
 
 export default typography
-export const rhythm = typography.rhythm
-export const scale = typography.scale
