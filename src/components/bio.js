@@ -42,17 +42,10 @@ const Bio = () => {
         quality={95}
         alt="Profile picture"
       />
-      {author?.name && (
+
         <p>
-          Written by{" "}
-          <strong>
-            <a href={`https://twitter.com/${social?.twitter || ``}`}>
-              {author.name}
-            </a>
-          </strong>{" "}
-          {author?.summary || null}
+          フロントエンドエンジニア<span>💻</span>スウェーデン語の勉強中<span>🇸🇪</span>　{" "}
         </p>
-      )}
     </div>
   )
 }

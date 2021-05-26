@@ -4,21 +4,12 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Image from "gatsby-image"
-
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  const thumbnail_image = post.frontmatter.thumbnail
 
-  if (post.frontmatter.thumbnail){
-    const thumbnail_image=post.frontmatter.thumbnail.childImageSharp.fluid;
-}
-else{
-    const thumbnail_image=data.def_image.childImageSharp.fixed;
-}
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -35,8 +26,6 @@ else{
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
-          <Image fluid={thumbnail_image} />
-          ???
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -90,25 +79,12 @@ export const pageQuery = graphql`
         title
       }
     }
-    def_image: file(absolutePath: { regex: "./default.jpg" }) {
-      childImageSharp {
-        fixed(width: 400, height: 300) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
       html
       frontmatter {
-        thumbnail {
-          childImageSharp {
-            fluid(maxWidth: 1280) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        
         title
         date(formatString: "MMMM DD, YYYY")
         description
