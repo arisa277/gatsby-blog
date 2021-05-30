@@ -25,9 +25,12 @@ const BlogPostTemplate = ({ data, location }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
+        <header className="blog_page">
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
+          <Img className="thumbnail"
+          fluid={data.markdownRemark.frontmatter.thumbnail.childImageSharp.fluid}
+        />
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -89,6 +92,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        thumbnail {
+          childImageSharp {
+            fluid(maxWidth: 1280) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
