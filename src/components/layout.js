@@ -13,13 +13,14 @@ const Layout = ({ location, title, children }) => {
         <Link to="/">{title}</Link>
       </h1>
     )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
-  }
+  } 
+  // else {
+  //   header = (
+  //     <Link className="header-link-home" to="/">
+  //       {title}
+  //     </Link>
+  //   )
+  // }
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
@@ -27,7 +28,7 @@ const Layout = ({ location, title, children }) => {
       <header className="global-header">{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}
+        © Copyright {new Date().getFullYear()}
         {` `}
         Arisa N
       </footer>
