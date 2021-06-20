@@ -52,7 +52,7 @@ const Contact = ({ data, location }) => {
         <p>
           各種お問い合わせはこちらのフォームよりお願いいたします。
           <br></br>
-          お名前・メールアドレス・件名・お問い合わせ内容を記載して送信ボタンをクリックしてください。
+          To contact me, please fill in this form!
         </p>
         <div className="contact">
           <form
@@ -68,7 +68,7 @@ const Contact = ({ data, location }) => {
                 id="name"
                 className="contact__field"
                 name="name"
-                label="お名前"
+                label="Your Name"
                 type="text"
                 variant="outlined"
                 value={name}
@@ -80,7 +80,7 @@ const Contact = ({ data, location }) => {
                 id="email"
                 className="contact__field"
                 name="email"
-                label="メールアドレス"
+                label="Your Email"
                 type="email"
                 variant="outlined"
                 value={email}
@@ -92,7 +92,7 @@ const Contact = ({ data, location }) => {
                 id="subject"
                 className="contact__field"
                 name="subject"
-                label="件名"
+                label="Subject"
                 type="text"
                 variant="outlined"
                 value={subject}
@@ -104,7 +104,7 @@ const Contact = ({ data, location }) => {
                 id="message"
                 className="contact__field"
                 name="message"
-                label="お問い合わせ内容"
+                label="Your Message"
                 multiline
                 rows={4}
                 variant="outlined"
