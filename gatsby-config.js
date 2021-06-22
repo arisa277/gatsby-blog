@@ -6,7 +6,7 @@ module.exports = {
       summary: ``,
     },
     description: `Front-end Developer Diary`,
-    siteUrl: `https://aripei.netlify.app/`,
+    siteUrl: `https://aripei27.com/`,
     social: {
       twitter: `aripei_27`,
     },
@@ -126,7 +126,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/profile.JPG`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-react-helmet`,
