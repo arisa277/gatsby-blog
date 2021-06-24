@@ -12,6 +12,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-image`,
     `gatsby-plugin-image`,
     {
@@ -127,6 +128,13 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/profile.JPG`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://aripei27.com`,
+        stripQueryString: true,
       },
     },
     `gatsby-plugin-react-helmet`,
