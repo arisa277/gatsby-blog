@@ -131,6 +131,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-robots-txt', // 追加
+      options: {
+        host: 'https://aripei27.com',
+        sitemap: 'https://aripei27.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
+    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: `https://aripei27.com`,
