@@ -13,14 +13,14 @@ const BlogPostTemplate = ({ data, location}) => {
   const { previous, next } = data
   const slug = data.markdownRemark.frontmatter.url
   const site = data.site.siteMetadata.siteUrl // from config
-  
-
+  const thumbnail = data.markdownRemark.frontmatter.thumbnail.childImageSharp.fluid.src
+  console.log(thumbnail)
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        url={`${site}/${slug}`}
+        slug={`${slug}${thumbnail}`}
       />
 
       <article
