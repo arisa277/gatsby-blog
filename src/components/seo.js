@@ -16,6 +16,7 @@ const Seo = ({ description, lang, meta, image: metaImage, title }) => {
       query {
         site {
           siteMetadata {
+            siteUrl
             title
             description
             social {
@@ -33,6 +34,7 @@ const Seo = ({ description, lang, meta, image: metaImage, title }) => {
     metaImage && metaImage.src
       ? `${site.siteMetadata.siteUrl}${metaImage.src}`
       : null
+     
   return (
     <Helmet
       htmlAttributes={{
@@ -110,7 +112,6 @@ const Seo = ({ description, lang, meta, image: metaImage, title }) => {
     />
   )
 }
-
 Seo.defaultProps = {
   lang: `ja`,
   meta: [],

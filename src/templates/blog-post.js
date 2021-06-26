@@ -5,21 +5,26 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Img from "gatsby-image"
-
+import ShareButtons from "../components/shareButtons"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-
+  const slug = data.markdownRemark.frontmatter.url
+  const site = data.site.siteMetadata.siteUrl // from config
+  const thumbnail = post.frontmatter.thumbnail
+    ? post.frontmatter.thumbnail.childImageSharp.resize
+    : null
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        image={thumbnail}
       />
-     
+
       <article
         className="blog-post"
         itemScope
@@ -28,14 +33,18 @@ const BlogPostTemplate = ({ data, location }) => {
         <header className="blog_page">
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
-          <Img className="thumbnail"
-          fluid={data.markdownRemark.frontmatter.thumbnail.childImageSharp.fluid}
-        />
+          <Img
+            className="thumbnail"
+            fluid={
+              data.markdownRemark.frontmatter.thumbnail.childImageSharp.fluid
+            }
+          />
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+        <ShareButtons title={post.frontmatter.title} url={`${site}${slug}`} />
         <hr />
         <footer>
           <Bio />
@@ -82,6 +91,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -92,6 +102,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        url
         thumbnail {
           childImageSharp {
             fluid(maxWidth: 1280) {
