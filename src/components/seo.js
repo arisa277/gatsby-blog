@@ -58,7 +58,7 @@ const Seo = ({ description, lang, meta, slug, title }) => {
         },
         {
           property: `og:image`,
-          content: `${url}/${slug}`,
+          content: `${url}${slug}`,
         },
         {
           name: `twitter:card`,
@@ -66,7 +66,7 @@ const Seo = ({ description, lang, meta, slug, title }) => {
         },
         {
           name: `twitter:image`,
-          content: `${url}/${slug}`,
+          content: `${url}${slug}`,
         },
         {
           name: `twitter:creator`,
