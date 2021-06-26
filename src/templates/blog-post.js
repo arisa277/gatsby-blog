@@ -7,22 +7,20 @@ import Seo from "../components/seo"
 import Img from "gatsby-image"
 import ShareButtons from "../components/shareButtons"
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({ data, location}) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
   const slug = data.markdownRemark.frontmatter.url
   const site = data.site.siteMetadata.siteUrl // from config
-  const thumbnail = post.frontmatter.thumbnail
-    ? post.frontmatter.thumbnail.childImageSharp.resize
-    : null
+  
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        image={thumbnail}
+        url={`${site}/${slug}`}
       />
 
       <article
@@ -44,7 +42,7 @@ const BlogPostTemplate = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
-        <ShareButtons title={post.frontmatter.title} url={`${site}${slug}`} />
+        <ShareButtons title={post.frontmatter.title} url={`${site}/${slug}`} />
         <hr />
         <footer>
           <Bio />
